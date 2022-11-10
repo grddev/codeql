@@ -121,3 +121,9 @@ jobs:
       - uses: ./.github/actions/fetch-codeql
       - name: Check QL formatting
         run: find swift/ql "(" -name "*.ql" -or -name "*.qll" ")" -print0 | xargs -0 codeql query format --check-only
+  database-upgrade-scripts:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/fetch-codeql
+      - uses: ./swift/actions/database-upgrade-scripts
